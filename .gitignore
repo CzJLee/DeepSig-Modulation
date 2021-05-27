@@ -1,3 +1,6 @@
 .DS_Store
 __pycache__/
 DeepSig-Dataset-2018/
+workspace.code-workspace
+.vscode/settings.json
+workspace.code-workspace
