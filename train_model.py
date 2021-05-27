@@ -189,7 +189,7 @@ for optimizer in optimizers:
         model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
         # Define the callbacks and save the best model to a new file
-        callbacks = [keras.callbacks.ModelCheckpoint(filepath=f'models/{model.name}.keras', save_best_only=True, monitor='val_loss'), 
+        callbacks = [keras.callbacks.ModelCheckpoint(filepath=f'models/{str(model.name) + "_" + str(optimizer)}.keras', save_best_only=True, monitor='val_loss'), 
             keras.callbacks.EarlyStopping(monitor="val_loss", min_delta = 0.01, patience = 5, verbose = 1, restore_best_weights = True)]
         # Train model
         model.fit(fft_dataset_train, labels_train, epochs=30, batch_size = 256, validation_data = (fft_dataset_val, labels_val), callbacks=callbacks)
@@ -201,7 +201,7 @@ for optimizer in optimizers:
 
         # Write accuracy to file
         f = open("models/accuracy_log.txt", "a")
-        f.write(f"Model {model.name} evaluated an accuracy of {accuracy}.\n")
+        f.write(f"Model {model.name} evaluated an accuracy of {accuracy} using optimizer {optimizer}.\n")
         f.write(f"Model {model.name} trained in {int(time.time() - start)} seconds.\n\n")
         f.close()
 
