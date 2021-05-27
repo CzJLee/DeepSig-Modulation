@@ -180,17 +180,6 @@ optimizers = ["adam", "sgd", "rmsprop"]
 
 
 # %%
-# Test
-fft_dataset_train = fft_dataset_train[:100]
-fft_dataset_val = fft_dataset_val[:100]
-fft_dataset_test = fft_dataset_test[:100]
-
-labels_train = labels_train[:100]
-labels_val = labels_val[:100]
-labels_test = labels_test[:100]
-
-
-# %%
 for optimizer in optimizers:
     for model in models:
         # Time the time it takes to train the model
