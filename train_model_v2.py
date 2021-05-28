@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import time
 import sklearn
 import tensorflow as tf
+import pickle
 from tensorflow import keras
 from tensorflow.keras import layers
 from sys import getsizeof
@@ -89,6 +90,17 @@ optimizers = [keras.optimizers.RMSprop(learning_rate=0.005, momentum=0.9)]
 
 
 # %%
+# # Enable for quick testing
+# fft_dataset_train = fft_dataset_train[:100]
+# fft_dataset_val = fft_dataset_val[:100]
+# fft_dataset_test = fft_dataset_test[:100]
+
+# labels_train = labels_train[:100]
+# labels_val = labels_val[:100]
+# labels_test = labels_test[:100]
+
+
+# %%
 for optimizer in optimizers:
     for model in models:
         # Time the time it takes to train the model
@@ -101,7 +113,11 @@ for optimizer in optimizers:
         callbacks = [keras.callbacks.ModelCheckpoint(filepath=f'models/{model.name}.keras', save_best_only=True, monitor='val_loss'), 
             keras.callbacks.EarlyStopping(monitor="val_loss", min_delta = 0.002, patience = 10, verbose = 1, restore_best_weights = True)]
         # Train model
-        model.fit(fft_dataset_train, labels_train, epochs=100, batch_size = 256, validation_data = (fft_dataset_val, labels_val), callbacks=callbacks)
+        history = model.fit(fft_dataset_train, labels_train, epochs=100, batch_size = 256, validation_data = (fft_dataset_val, labels_val), callbacks=callbacks)
+
+        # Save pickle of history
+        with open(f"models/{model.name}.pickle", mode='wb') as f:
+            pickle.dump(history.history, f)
 
         # Evaluate model
         _, accuracy = model.evaluate(fft_dataset_test, labels_test)
