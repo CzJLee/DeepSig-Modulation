@@ -34,3 +34,6 @@ Model small_model trained in 877 seconds.
 Model less_dense evaluated an accuracy of 0.4138081967830658 using optimizer rmsprop.
 Model less_dense trained in 799 seconds.
 
+Model snr_10_nadam evaluated an accuracy of 0.33035966753959656.
+Model snr_10_nadam trained in 3233 seconds.
+
