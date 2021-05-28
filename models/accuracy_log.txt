@@ -43,3 +43,12 @@ Model snr_10_adam_smaller_model_kernel5 trained in 2917 seconds.
 Model snr_10_adam_smaller_model_kernel5 evaluated an accuracy of 0.4459593594074249.
 Model snr_10_adam_smaller_model_kernel5 trained in 25298 seconds.
 
+Model iq_model evaluated an accuracy of 0.6390118598937988.
+Model iq_model trained in 1701 seconds.
+
+Model iq_smaller_model evaluated an accuracy of 0.674322783946991.
+Model iq_smaller_model trained in 1940 seconds.
+
+Model iq_even_smaller_model evaluated an accuracy of 0.8968878388404846.
+Model iq_even_smaller_model trained in 2080 seconds.
+
