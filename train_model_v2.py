@@ -45,7 +45,7 @@ models = []
 
 
 # %%
-# Large model SNR 10
+# Modify Model SNR 10
 inputs = keras.Input(shape=(1024, 1))
 x = layers.Conv1D(filters=64, kernel_size=5, activation='relu')(inputs)
 x = layers.BatchNormalization()(x)
