@@ -1,0 +1,36 @@
+Model base_model evaluated an accuracy of 0.43628188967704773 using optimizer adam.
+Model base_model trained in 953 seconds.
+
+Model small_model evaluated an accuracy of 0.431845098733902 using optimizer adam.
+Model small_model trained in 1026 seconds.
+
+Model less_dense evaluated an accuracy of 0.43672388792037964 using optimizer adam.
+Model less_dense trained in 1107 seconds.
+
+Model batch_normalization evaluated an accuracy of 0.45038530230522156 using optimizer adam.
+Model batch_normalization trained in 1910 seconds.
+
+Model double_conv_layers evaluated an accuracy of 0.43566015362739563 using optimizer adam.
+Model double_conv_layers trained in 1973 seconds.
+
+Model base_model evaluated an accuracy of 0.041737157851457596 using optimizer sgd.
+Model base_model trained in 332 seconds.
+
+Model small_model evaluated an accuracy of 0.0416589118540287 using optimizer sgd.
+Model small_model trained in 356 seconds.
+
+Model less_dense evaluated an accuracy of 0.4334988594055176 using optimizer sgd.
+Model less_dense trained in 566 seconds.
+
+Model batch_normalization evaluated an accuracy of 0.4608534276485443 using optimizer sgd.
+Model batch_normalization trained in 791 seconds.
+
+Model base_model evaluated an accuracy of 0.4142184555530548 using optimizer rmsprop.
+Model base_model trained in 618 seconds.
+
+Model small_model evaluated an accuracy of 0.4192748963832855 using optimizer rmsprop.
+Model small_model trained in 877 seconds.
+
+Model less_dense evaluated an accuracy of 0.4138081967830658 using optimizer rmsprop.
+Model less_dense trained in 799 seconds.
+
