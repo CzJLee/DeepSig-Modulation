@@ -37,3 +37,6 @@ Model less_dense trained in 799 seconds.
 Model snr_10_nadam evaluated an accuracy of 0.33035966753959656.
 Model snr_10_nadam trained in 3233 seconds.
 
+Model snr_10_adam_smaller_model_kernel5 evaluated an accuracy of 0.46267616748809814.
+Model snr_10_adam_smaller_model_kernel5 trained in 2917 seconds.
+
