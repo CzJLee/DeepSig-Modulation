@@ -176,7 +176,7 @@ models.append(keras.Model(inputs=inputs, outputs=outputs, name = "double_conv_la
 
 # %%
 # Create list of optimizers to use
-optimizers = ["adam", "sgd", "rmsprop"]
+optimizers = ["rmsprop"]
 
 
 # %%
