@@ -58,3 +58,6 @@ Model iq_even_smaller_model_larger_kernel trained in 2485 seconds.
 Model iq_even_smaller_model_larger_kernel_no_normalization evaluated an accuracy of 0.9564647674560547.
 Model iq_even_smaller_model_larger_kernel_no_normalization trained in 3493 seconds.
 
+Model iq_smaller_dense_more_conv evaluated an accuracy of 0.95466148853302.
+Model iq_smaller_dense_more_conv trained in 3673 seconds.
+

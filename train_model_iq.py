@@ -81,38 +81,6 @@ models = []
 # IQ Larger Kernel
 inputs = keras.Input(shape=(1024, 2))
 x = layers.Conv1D(filters=64, kernel_size=7, activation='relu')(inputs)
-x = layers.BatchNormalization()(x)
-x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=7, activation='relu')(x)
-x = layers.BatchNormalization()(x)
-x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=5, activation='relu')(x)
-x = layers.BatchNormalization()(x)
-x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=5, activation='relu')(x)
-x = layers.BatchNormalization()(x)
-x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=5, activation='relu')(x)
-x = layers.BatchNormalization()(x)
-x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
-x = layers.BatchNormalization()(x)
-x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
-x = layers.BatchNormalization()(x)
-x = layers.Flatten()(x)
-x = layers.Dense(128)(x)
-outputs = layers.Dense(24, activation='softmax')(x)
-
-models.append(keras.Model(inputs=inputs, outputs=outputs, name = "iq_even_smaller_model_larger_kernel"))
-
-models[-1].summary()
-
-
-# %%
-# IQ Larger Kernel
-inputs = keras.Input(shape=(1024, 2))
-x = layers.Conv1D(filters=64, kernel_size=7, activation='relu')(inputs)
 x = layers.MaxPooling1D(pool_size=2)(x)
 x = layers.Conv1D(filters=64, kernel_size=7, activation='relu')(x)
 x = layers.MaxPooling1D(pool_size=2)(x)
@@ -123,11 +91,13 @@ x = layers.MaxPooling1D(pool_size=2)(x)
 x = layers.Conv1D(filters=64, kernel_size=5, activation='relu')(x)
 x = layers.MaxPooling1D(pool_size=2)(x)
 x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
+x = layers.MaxPooling1D(pool_size=2)(x)
+x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
 x = layers.Flatten()(x)
-x = layers.Dense(128)(x)
+x = layers.Dense(64)(x)
 outputs = layers.Dense(24, activation='softmax')(x)
 
-models.append(keras.Model(inputs=inputs, outputs=outputs, name = "iq_even_smaller_model_larger_kernel_no_normalization"))
+models.append(keras.Model(inputs=inputs, outputs=outputs, name = "iq_smaller_dense_more_conv"))
 
 models[-1].summary()
 
