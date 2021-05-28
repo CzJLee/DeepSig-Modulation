@@ -47,47 +47,36 @@ models = []
 # %%
 # Large model SNR 10
 inputs = keras.Input(shape=(1024, 1))
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(inputs)
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
+x = layers.Conv1D(filters=64, kernel_size=5, activation='relu')(inputs)
 x = layers.BatchNormalization()(x)
 x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
+x = layers.Conv1D(filters=128, kernel_size=5, activation='relu')(x)
 x = layers.BatchNormalization()(x)
 x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
-x = layers.Conv1D(filters=64, kernel_size=3, activation='relu')(x)
+x = layers.Conv1D(filters=128, kernel_size=5, activation='relu')(x)
 x = layers.BatchNormalization()(x)
 x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=128, kernel_size=3, activation='relu')(x)
-x = layers.Conv1D(filters=128, kernel_size=3, activation='relu')(x)
+x = layers.Conv1D(filters=128, kernel_size=5, activation='relu')(x)
 x = layers.BatchNormalization()(x)
 x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=256, kernel_size=3, activation='relu')(x)
-x = layers.Conv1D(filters=256, kernel_size=3, activation='relu')(x)
+x = layers.Conv1D(filters=256, kernel_size=5, activation='relu')(x)
 x = layers.BatchNormalization()(x)
 x = layers.MaxPooling1D(pool_size=2)(x)
-x = layers.Conv1D(filters=512, kernel_size=3, activation='relu')(x)
-x = layers.Conv1D(filters=512, kernel_size=3, activation='relu')(x)
-x = layers.Conv1D(filters=512, kernel_size=3, activation='relu')(x)
+x = layers.Conv1D(filters=256, kernel_size=5, activation='relu')(x)
 x = layers.BatchNormalization()(x)
 x = layers.Flatten()(x)
-x = layers.Dropout(0.25)(x)
 x = layers.Dense(256)(x)
-x = layers.Dropout(0.25)(x)
 x = layers.Dense(128)(x)
-x = layers.Dropout(0.25)(x)
 outputs = layers.Dense(24, activation='softmax')(x)
 
-models.append(keras.Model(inputs=inputs, outputs=outputs, name = "snr_10_nadam"))
-models.append(keras.Model(inputs=inputs, outputs=outputs, name = "snr_10_adagrad"))
+models.append(keras.Model(inputs=inputs, outputs=outputs, name = "snr_10_adam_smaller_model_kernel5"))
 
 models[-1].summary()
 
 
 # %%
 # Create list of optimizers to use
-optimizers = [keras.optimizers.Nadam(learning_rate=0.005), keras.optimizers.Adagrad(learning_rate=0.005)]
+optimizers = ["adam"]
 
 
 # %%
@@ -112,7 +101,7 @@ for optimizer in optimizers:
 
         # Define the callbacks and save the best model to a new file
         callbacks = [keras.callbacks.ModelCheckpoint(filepath=f'models/{model.name}.keras', save_best_only=True, monitor='val_loss'), 
-            keras.callbacks.EarlyStopping(monitor="val_loss", min_delta = 0.002, patience = 10, verbose = 1, restore_best_weights = True)]
+            keras.callbacks.EarlyStopping(monitor="val_accuracy", min_delta = 0.01, patience = 10, verbose = 1, restore_best_weights = True)]
         # Train model
         history = model.fit(fft_dataset_train, labels_train, epochs=100, batch_size = 256, validation_data = (fft_dataset_val, labels_val), callbacks=callbacks)
 
