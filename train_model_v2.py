@@ -79,14 +79,15 @@ x = layers.Dense(128)(x)
 x = layers.Dropout(0.25)(x)
 outputs = layers.Dense(24, activation='softmax')(x)
 
-models.append(keras.Model(inputs=inputs, outputs=outputs, name = "snr_10_new_model"))
+models.append(keras.Model(inputs=inputs, outputs=outputs, name = "snr_10_nadam"))
+models.append(keras.Model(inputs=inputs, outputs=outputs, name = "snr_10_adagrad"))
 
 models[-1].summary()
 
 
 # %%
 # Create list of optimizers to use
-optimizers = [keras.optimizers.RMSprop(learning_rate=0.005, momentum=0.9)]
+optimizers = [keras.optimizers.Nadam(learning_rate=0.005), keras.optimizers.Adagrad(learning_rate=0.005)]
 
 
 # %%
