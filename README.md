@@ -105,5 +105,3 @@ After trying different model hyper-parameters, my best model was able to achieve
 The best accuracy achieved by a model can likely be raised by a percent or two by fine tuning the training, normalization, and adding data regularization. 
 
 From this project, I was able to experiment and learn enough to have a solid foundation of building large models from scratch for large datasets. 
-
-test
